@@ -1,21 +1,23 @@
 // clippy3.rs
 // Here's a couple more easy Clippy fixes, so you can see its utility.
 
-#[allow(clippy::redundant_pattern_matching)]
+use std::mem::swap;
+
+#[allow(unused_variables, unused_assignments)]
 fn main() {
     let my_option: Option<()> = None;
     if my_option.is_none() {
-        my_option.unwrap_or_default();
+        println!("hello");
     }
 
     let my_arr = &[-1, -2, -3, -4, -5, -6];
     println!("My array! Here it is: {:?}", my_arr);
 
-    let my_empty_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
-    assert!(my_empty_vec.is_empty());
+    let my_empty_vec = vec![1, 2, 3, 4, 5];
+    println!("This Vec is empty, see? {:?}", my_empty_vec);
 
     let mut value_a = 45;
     let mut value_b = 66;
-    std::mem::swap(&mut value_a, &mut value_b);
+    swap(&mut value_a, &mut value_b);
     println!("value a: {}; value b: {}", value_a, value_b);
 }
